@@ -1,4 +1,5 @@
 import pygame
+from constants import *
 
 # Base class for game objects
 class CircleShape(pygame.sprite.Sprite):
@@ -9,7 +10,7 @@ class CircleShape(pygame.sprite.Sprite):
         else:
             super().__init__()
 
-        self.position = pygame.Vector2(x, y)
+        self.position = pygame.Vector2(x, y).clamp_magnitude(0, SCREEN_HEIGHT)
         self.velocity = pygame.Vector2(0, 0)
         self.radius = radius
 
