@@ -19,7 +19,7 @@ def main():
 	Player.containers = (updatable, drawable)
 	Asteroid.containers = (asteroid_group, updatable,drawable)
 	AsteroidField.containers = (updatable)
-	Shot.containers = (updatable, drawable)
+	Shot.containers = (shot_group, updatable, drawable)
 	clock = pygame.time.Clock()
 	dt = 0
 	asteroid_field = AsteroidField()
