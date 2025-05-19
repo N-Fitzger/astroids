@@ -15,10 +15,10 @@ class Asteroid(CircleShape):
 	def split(self):
 		self.kill()
 		if self.radius <= ASTEROID_MIN_RADIUS:
-			powerup_roll = random.randint(0, 2)
+			powerup_roll = random.randint(0, 8)
 			if powerup_roll == 1:
 				powerup = Powerup(self.position.x, self.position.y, POWERUP_RADIUS)
-				powerup.velocity = pygame.Vector2(0, -1) * POWERUP_SPEED
+				powerup.velocity = pygame.Vector2(0, 1) * POWERUP_SPEED
 			return
 		else:
 			new_angle = random.uniform(20,50)

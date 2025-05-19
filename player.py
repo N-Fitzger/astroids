@@ -8,6 +8,7 @@ class Player(CircleShape):
 		self.rotation = 0
 		self.shot_cooldown = 0
 		self.super_cooldown = 0
+		self.has_powerup = False
 	# in the player class
 
 	def triangle(self):
@@ -19,6 +20,9 @@ class Player(CircleShape):
 		return [a, b, c]
 
 	def shoot(self, position):
+		shot1 = Shot(position.x, position.y, SHOT_RADIUS)
+		shot1.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * SHOT_VELOCITY
+	def tripleshoot(self, position):
 		shot1 = Shot(position.x, position.y, SHOT_RADIUS)
 		shot1.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * SHOT_VELOCITY
 		shot2 = Shot(position.x, position.y, SHOT_RADIUS)
@@ -47,9 +51,15 @@ class Player(CircleShape):
 	        if keys[pygame.K_s]:
 	        	self.move(-dt)
 	        if keys[pygame.K_SPACE]:
-	        	if self.shot_cooldown <= 0:
-	        		self.shoot(self.position)
-	        		self.shot_cooldown = 0.3
+	        	if self.has_powerup == True:
+	        		
+	        		if self.shot_cooldown <= 0:
+	        			self.tripleshoot(self.position)
+	        			self.shot_cooldown = 0.3
+	        	else:
+	        		if self.shot_cooldown <= 0:
+	        			self.shoot(self.position)
+	        			self.shot_cooldown = 0.3
 	        self.shot_cooldown -= dt
 	        
 	        if keys[pygame.K_e]:

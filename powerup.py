@@ -1,6 +1,7 @@
 import pygame
 from constants import *
 from circleshape import CircleShape
+from player import Player
 class Powerup(CircleShape):
 
 	def __init__(self, x, y, radius):
@@ -18,6 +19,4 @@ class Powerup(CircleShape):
 		pygame.draw.polygon(screen, "blue", self.triangle())
 	def update(self, dt):
 		self.position += (self.velocity * dt)
-	def gain(self):
-		self.kill()
-
+	

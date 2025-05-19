@@ -41,6 +41,10 @@ def main():
 				if asteroid.check_collision(shot):
 					asteroid.split()
 					shot.kill()
+		for p in powerup_group:
+			if player.check_collision(p):
+				p.kill()
+				player.has_powerup = True
 		for obj in drawable:
 			obj.draw(screen)		
 		pygame.display.flip()
